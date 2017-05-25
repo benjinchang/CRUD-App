@@ -1,12 +1,17 @@
-var express            = require("express");
-var bodyParser         = require("body-parser");
+var express = require("express");
+var bodyParser = require("body-parser");
 var methodOverride     = require("method-override");
 
+// Sets up the Express App
+// =============================================================
 var app = express();
-// Serve static content for the app from the "public" directory in the application directory.
-app.use(express.static(__dirname + "/public"));
+var PORT = process.env.PORT || 3000;
+
+// Requiring our models for syncing
+var db = require("./models");
 
 // parse application/x-www-form-urlencoded
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: false
 }));
@@ -19,9 +24,31 @@ app.engine("handlebars", exphbs({
 }));
 app.set("view engine", "handlebars");
 
-var routes = require("./controllers/routes.js");
-app.use("/", routes);
+// Routes =============================================================
+require('./routes')(app);
 
-// listen on port 3000
-var port = process.env.PORT || 3000;
-app.listen(port);
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+});
+
+// error handler
+// no stacktraces leaked to user unless in development environment
+app.use(function(err, req, res, next) {
+  res.status(err.status || 500);
+  res.render('error', {
+    message: err.message,
+    error: (app.get('env') === 'development') ? err : {}
+  })
+});
+
+
+// Syncing our sequelize models and then starting our express app
+db.sequelize.sync({ force: true }).then(function() {
+  app.listen(PORT, function() {
+    console.log("App listening on PORT " + PORT);
+  });
+});
+
