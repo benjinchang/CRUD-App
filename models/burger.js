@@ -1,4 +1,4 @@
-// 'use strict';
+'use strict';
 
 module.exports = function(sequelize, DataTypes) {
   var Burger = sequelize.define("Burger", {
@@ -11,6 +11,10 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.BOOLEAN,
       allowNull: false
     }
+  },
+  {
+    timestamps: false
+  
   });
   return Burger;
 };

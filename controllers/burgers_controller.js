@@ -5,24 +5,23 @@ var router  = express.Router();
 router.get('/', function(req,res) {
   db.Burger.findAll({
   }).then(function(burger_data){
-    // console.log(burger_data);
     res.render('index', {
       burger_data
     }); 
   })
 })
 
-router.put('/update', function(req,res){
+router.post('/update', function(req,res){
+  console.log(req.body);
   db.Burger.update(req.body,
     {
       where: {
         id: req.body.id
-      }
-  }).then(function(burger_data) {
-    res.render('index', {
-      burger_data
-    });
+    }
+  }).then(function() {
+    res.redirect('/');
   });
+
 });
 
 router.post('/create', function(req,res){
