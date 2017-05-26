@@ -23,6 +23,7 @@ Type in browser localhost:3000
 - NPM
 - Node.js
 - Express.js
+- Sequelize
 - MySQL
 - Heroku
 

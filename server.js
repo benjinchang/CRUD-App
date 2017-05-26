@@ -1,6 +1,7 @@
-var express = require("express");
-var bodyParser = require("body-parser");
+var express            = require("express");
+var bodyParser         = require("body-parser");
 var methodOverride     = require("method-override");
+var config             = require("./config/extra-config");
 
 // Sets up the Express App
 // =============================================================
