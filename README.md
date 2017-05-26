@@ -1,9 +1,9 @@
 # HW-15-Sequelize
 Using sequelize for the last homework assignment. Burger 2: The Sequel
-Burger eating app that will display a list of burgers available to be eaten and a list of burgers that have been eaten already. 
+Burger eating app that performs the CRUD operations via ORM Sequelize. App is deployed on Heroku with JawsDB mySQL add-on. 
 
 ## Live Link
-- none
+- https://aqueous-sea-76342.herokuapp.com/
 
 ## Description on how to use the app
 User can click on the devour button to eat burgers. Burgers that have been eaten will be displayed on the right side.
@@ -28,6 +28,7 @@ Type in browser localhost:3000
 - Heroku
 
 ## Code Explaination
-App reads from the mysql database of burgers available to be eaten. 
-Any burgers that have been eaten will be displayed on the right and devoured status set to true in the database.
-When user adds burger, the input value is saved into the mysql database as a new burger that can be devoured.
+- App reads from the mysql database of available burgers that can be devoured.
+- Any burgers that have been eaten change their boolean value from 0 to 1.
+- User can create a burger via the create method from sequelize and saved to the database.
+- User can also click on the delete button to delete all burgers from the database. 

@@ -4,12 +4,13 @@
 		<div class="jumbotron">
 		  <h1 class="display-3 text-center" style="font-weight: 900; font-size: 3em;">Burger 2: The Sequel</h1>
 		  <hr class="my-4">
-		  <p class="lead">This is a simple application that allows users to devour burgers from a mySQL database and display the devoured burgers using an ORM Sequelize. Users can add new burgers and delete all burgers in the database.</p>
+		  <p class="lead">Simple application that performs CRUD operations to a mySQL database via JawsDB deployed on heroku.</p>
+		  <p class="lead">Retrieves data from the database (Available Burgers), updates burgers value when devoured, creates a burger (Add a burger), &amp; deletes all data from the database (Delete button) using the ORM Sequelize.</p>
 		</div>
 		<div class="row">
 			<div class="col-xs-6 text-center" class="task">
 				<div class="panel panel-default">
-					<div class="panel-heading" style="font-weight: 900; font-size: 1.5em;">Burgers Available</div>
+					<div class="panel-heading" style="font-weight: 900; font-size: 1.5em;">Available Burgers</div>
 					<div class="panel-body">
 						{{#each burger_data}}
 							{{#unless this.devoured}}
@@ -32,7 +33,7 @@
 			</div>
 			<div class="col-xs-6 text-center" class="task">
 				<div class="panel panel-default">
-					<div class="panel-heading" style="font-weight: 900; font-size: 1.5em;">Burgers Devoured</div>
+					<div class="panel-heading" style="font-weight: 900; font-size: 1.5em;">Devoured Burgers</div>
 					<div class="panel-body">
 						{{#each burger_data}}
 							{{#if this.devoured}}
@@ -50,7 +51,7 @@
 	<div class="row">
 		<div class="col-xs-6 text-center enter_section">
 			<div class="panel panel-default">
-				<div class="panel-heading" style="font-weight: 900; font-size: 1.5em;">Add a burger!</div>
+				<div class="panel-heading" style="font-weight: 900; font-size: 1.5em;">Add a burger</div>
 				<div class="panel-body">
 					<form action="/add" method="POST">
 						<div class="input-group">
