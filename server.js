@@ -16,6 +16,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: false
 }));
+
+//Access public files
+app.use(express.static("public"));
+
 // override with POST having ?_method=DELETE
 app.use(methodOverride("_method"));
 var exphbs = require("express-handlebars");
@@ -45,10 +49,8 @@ app.use(function(err, req, res, next) {
   })
 });
 
-
 // Syncing our sequelize models and then starting our express app
 db.sequelize.sync({
-	
 }).then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
