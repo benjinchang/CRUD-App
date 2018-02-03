@@ -1,4 +1,4 @@
-# HW-15-Sequelize
+# Burger 2 CRUD Application
 Using sequelize for the last homework assignment. Burger 2: The Sequel
 Burger eating app that performs the CRUD operations via ORM Sequelize. App is deployed on Heroku with JawsDB mySQL add-on. 
 
